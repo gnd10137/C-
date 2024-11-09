@@ -93,40 +93,56 @@ int main()
 	for (int i=0; i<5; i++)
 	{
 		int dice = rand()%6+1;
-		printf("¸îÀÌ ³ª¿ÃÁö ¿¹ÃøÇÏ¼¼¿ä : ");
+		printf("ëª‡ì´ ë‚˜ì˜¬ì§€ ì˜ˆì¸¡í•˜ì„¸ìš” : ");
 		scanf("%d",&my);
 		printf("\n");
 		com = rand()%6+1;
-		printf("ÄÄÇ»ÅÍÀÇ ¿¹Ãø : %d\n",com);
+		printf("ì»´í“¨í„°ì˜ ì˜ˆì¸¡ : %d\n",com);
 		printf("\n");
 		srand(time(NULL));
 		int dic = rand()%6+1;
 		printf("\n");
-		printf("ÁÖ»çÀ§ : %d\n",dice);
+		printf("ì£¼ì‚¬ìœ„ : %d\n",dice);
+		printf("\n");
 		if (my==dice && com==dice) 
 		{
-			printf("µÑ´Ù 1Á¡¾¿ È¹µæ!\n");
+			printf("ë‘˜ë‹¤ 1ì ì”© íšë“!\n");
 			myscore+=1;
 			comscore+=1;
 		}
 		else if (my==dice)
 		{
-			printf("¸ÂÃè½À´Ï´Ù! 1Á¡È¹µæ!\n");
+			printf("ë§žì·„ìŠµë‹ˆë‹¤! 1ì íšë“!\n");
 			myscore+=1;
 		}
 		else if (com==dice)
 		{
-			printf("ÄÄÇ»ÅÍ°¡ ¸ÂÃè³×¿ä ¤Ð¤Ð\n");
+			printf("ì»´í“¨í„°ê°€ ë§žì·„ë„¤ìš” ã… ã… \n");
 			comscore+=1;
 		}
 		else
 		{
-			printf("µÑ´Ù Æ²·È³×¿ä.\n");
+			printf("ë‘˜ë‹¤ í‹€ë ¸ë„¤ìš”.\n");
 		}
 		printf("\n");
-		printf("#### ÇöÀçÁ¡¼ö ####\n",i);
-		printf("³» ½ºÄÚ¾î : %d Á¡\n",myscore);
-		printf("ÄÄÇ»ÅÍ ½ºÄÚ¾î : %d\n",comscore);
+		printf("#### í˜„ìž¬ì ìˆ˜ ####\n",i);
+		printf("ë‚´ ìŠ¤ì½”ì–´ : %d ì \n",myscore);
+		printf("ì»´í“¨í„° ìŠ¤ì½”ì–´ : %dì \n",comscore);
 		printf("\n");
+	}
+	printf("#### ê²°ê³¼ ####\n");
+	printf("ë‚´ ìŠ¤ì½”ì–´ : %d ì  \n",myscore);
+	printf("ì»´í“¨í„° ìŠ¤ì½”ì–´ : %dì \n",comscore);
+	if (myscore==comscore)
+	{
+		printf("ë¬´ìŠ¹ë¶€!");
+	}
+	else if(myscore>comscore)
+	{
+		printf("ìŠ¹ë¦¬!");
+	}
+	else
+	{
+		printf("íŒ¨ë°°ã… ã… ");
 	}
 }
