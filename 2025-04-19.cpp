@@ -1,95 +1,152 @@
 //#include <cstdio>
-//	int One(int n)
-//	{
-//		return (n-2)*(n+1)*n/2;
-//	}
-//	int Two(int n)
-//	{
-//		return (n*n*n)-((n-1)*(n-1));
-//	}
-//	int Three(int n)
-//	{
-//		return (3*n*n*n)-(n*n)-(3*n);
-//	}
-//	int main()
-//	{
-//		int n,m;
-//		scanf("%d %d",&n,&m);
-//		if  (m == 1) printf("%d",One(n));
-//		else if (m == 2) printf("%d",Two(n));
-//		else printf("%d",Three(n));
-//		return 0;
-//	}
-
-//#include <cstdio>
-//int Sum(int n)
+//int ans = 1234567890;
+//int S[10], B[10];
+//int n;
+//
+//void solution (int index, int s, int b,int count)
 //{
-//	if (n==0) return 0;
-//	return n%10+Sum(n/10);
+//	if(index==n)
+//	{
+//		int diff;
+//		if (s>b) diff = s-b;
+//		else diff = b-s;
+//		if (diff<ans) ans = diff;
+//		return;
+//	}
+//	solution(index+1,s,b,count+1);
+//	solution(index+1,s*S[index],b+B[index],count);
 //}
 //int main()
 //{
-//	int n;
 //	scanf("%d",&n);
-//	printf("%d",Sum(n));
+//	for (int i = 0; i< n; i++)
+//	{
+//		scanf("%d %d",&S[i], &B[i]);
+//	}
+//	solution(0,1,0,0);
+//	printf("%d",ans);
 //	return 0;
 //}
 
 //#include <cstdio>
-//int Collatz(int n)
-//{
-//	if (n==1) return 0;
-//	if (n%2==0) return 1+Collatz(n/2);
-//	else return 1+ Collatz(n*3+1);
-//}
 //int main()
 //{
-//	int n;
-//	scanf("%d",&n);
-//	printf("%d",Collatz(n));
-//	return 0;
+//	char str[1001];
+//	scanf("%[^\n]",str);
+//	for (int i = 0; str[i]; i++)
+//	{
+//		if ('A'<=str[i] && str[i]<='Z')
+//		{
+//			str[i] += 32;
+//		}
+//	}
+//	printf("%s",str);
 //}
 
 //#include <cstdio>
-//void Hanoi (int n,int from, int to)
+//int main()
 //{
-//	if (n==0) return;
-//	Hanoi (n-1,from,6-from-to);
-//	printf("%d %d %d\n",n, from, to);
-//	Hanoi(n-1, 6-from-to,to);
+//	char str[1001];
+//	scanf("%s",str);
+//	int count[26]={0,};
+//	for (int i = 0; str[i]; i++)
+//	{
+//		if ('a' <= str[i] && str[i] <= 'z')
+//		{
+//			str[i] = str[i] - 32;
+//		}
+//		count[str[i]-'A']++;
+//	}
+//	for (int i = 0; i <26; i++)
+//	{
+//		printf("%d ",count[i]);
+//	}
 //}
+
+//#include <cstdio>
 //int main()
 //{
 //	int n;
 //	scanf("%d",&n);
-//	Hanoi(n,1,3);
-//	return 0;
+//	char str[1001];
+//	scanf("%s",str);
+//	for (int i = 0; str[i]; i++)
+//	{
+//		printf("%c",(((str[i]+n)-'A')%26)+'A');
+//	}
+//}
+
+//#include <cstdio>
+//int main()
+//{
+//	char str[1001];
+//	int check[26];
+//	scanf("%s",str);
+//	for (int i = 0; i < 26; i++)
+//	{
+//		check[i]=-1;
+//	}
+//	for (int i = 0; str[i]; i++)
+//	{
+//		if (check[str[i]-'a'] == -1)
+//		{
+//			check[str[i]-'a']= i;
+//		}
+//	}
+//	for (int i = 0; i<26; i++)
+//	{
+//		printf("%d ",check[i]);
+//	}
+//}
+
+//#include <cstdio>
+//int main()
+//{
+//	char str_a[1001];
+//	char str_b[1001];
+//	int d,l,index=0;
+//	scanf("%d %d",&d, &l);
+//	scanf("%s",str_a);
+//	for (int i = 0; str_a[i]; i++)
+//	{
+//		if (str_b[index])
+//		{
+//			index++;
+//		}
+//		str_b[index] = str_a[i];
+//		index=index+d;
+//		if (index >= l)
+//		{
+//			index -= l;
+//		}
+//	}
+//	printf("%s",str_b);
 //}
 
 #include <cstdio>
-int n;
-int p[11];
-int ans;
-void Performance(int index, int sum)
-{
-	if (index == n)
-	{
-		if (ans < sum) ans = sum;
-		return;
-	}
-	int p_first = p[index];
-	int p_second = p[index] * p[index] - 40 * p[index] + 300;
-	Performance(index + 1, sum+p_first);
-	Performance(index + 1, sum+p_second);
-}
 int main()
 {
+	int n;
+	char a[1001];
+	char b[1001];
 	scanf("%d",&n);
-	for (int i = 0; i < n; i++)
+	scanf("%s",a);
+	scanf("%s",b);
+	for (int i = 0; a[i]; i++)
 	{
-		scanf("%d",&p[i]);
+		bool check = true;
+		for (int j = 0; b[j]; j++)
+		{
+			if (a[(i+j)%n] != b[j])
+			{
+				check = false;
+			}
+		}
+		if (check)
+			{
+				printf("Yes");
+				return 0;
+			}
 	}
-	Performance(0,0);
-	printf("%d",ans);
-	return 0;
+	printf("No");
 }
