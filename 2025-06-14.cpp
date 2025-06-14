@@ -1,100 +1,110 @@
 //#include <cstdio>
+//int n = 10;
+//int a[11], b[11];
+//
+//int main()
+//{
+//	int i;
+//	for (i = 1; i <= n; i++)
+//	{
+//		scanf("%d",&a[i]);
+//	}
+//	for (i = 1; i <= n; i++)
+//		scanf("%d",&b[i]);
+//	
+//	int awin, bwin, draw;
+//	awin = bwin = draw = 0;
+//	for (int i = 0; i <= n; i++)
+//	{
+//		if (a[i] > b[i]) awin++;
+//		else if (a[i] < b[i]) bwin++;
+//		else draw++;
+//	}
+//	if (awin > bwin) printf("A\n");
+//	else if (awin < bwin) printf("B\n");
+//	else printf("D\n");
+//	return 0;
+//}
+
+//#include <cstdio>
 //#include <stack>
 //using namespace std;
 //
+//char a[100001];
+//
 //int main()
 //{
-//	int t;
-//	scanf("%d", &t);
-//	while (t--)
+//	scanf("%s", a);
+//	stack <int> s;
+//	int ans = 0;
+//	for (int i = 0; a[i]; i++)
 //	{
-//		char str[51];
-//		scanf("%s", str);
-//		int check = 0;
-//		stack <char> s;
-//		for (int i = 0; str[i]; i++)
+//		if (a[i] == '(')
 //		{
-//			if (str[i] == '(')
+//			s.push(i);
+//		}
+//		else
+//		{
+//			if (s.top() + 1 == i)
 //			{
-//				s.push(str[i]);
+//				s.pop();
+//				ans += s.size();
 //			}
 //			else
 //			{
-//				if (s.empty() || s.top() == ')')
-//				{
-//					check = 1;
-//					break;
-//				}
-//				else
-//					s.pop();
+//				s.pop();
+//				ans += 1;
 //			}
 //		}
-//		if (!s.empty() || check)
-//			printf("NO\n");
-//		else
-//			printf("YES\n");
 //	}
+//	printf("%d", ans);
 //	return 0;
 //}
 
 //#include <cstdio>
-//#include <queue>
+//#include <stack>
+//#include <utility>
 //using namespace std;
+//
+//stack <pair <int, int> > s;
+//int ans[500001];
 //
 //int main()
 //{
-//	int n,m;
-//	scanf("%d %d",&n, &m);
-//	queue <int> q;
-//	for (int i = 0; i <= n; i++)
-//	{
-//		q.push(i);
-//	}
-//	printf("<");
-//	for (int i = 0; i < n - 1; i++)
-//	{
-//		for (int j = 0; j < m - 1; j++)
-//		{
-//			q.push(q.front());
-//			q.pop();
-//		}
-//		printf("%d ",q.front());
-//		q.pop();
-//	}
-//	printf("%d>\n", q.front());
-//	return 0;
-//}
-
-//#include <cstdio>
-//#include <vector>
-//using namespace std;
-//
-//int main()
-//{
-//	vector <int> v;
-//	v.push_back(12);
-//	v.push_back(5);
-//	v.push_back(96);
+//	int a, b;
+//	scanf("%d", &a);
+//	s.push({999999999, 0});
 //	
-//	for (int i = 0; i < v.size; i++)
-//		printf("%d\n",v[i]);
-//	return 0;
+//	for (int i = 0; i < a; i++)
+//	{
+//		scanf("%d", &b);
+//		while (s.top().first < b)
+//		{
+//			s.pop();
+//		}
+//		ans[i] = s.top().second;
+//		s.push({b, i + 1});
+//	}
+//	for (int i = 0; i < a; i++)
+//	{
+//		printf("%d", ans[i]);
+//	}
 //}
 
 #include <cstdio>
-#include <stack>
-using namespace std;
-
+#include <cstring>
 int main()
 {
-	stack <int> st;
-	
-	st.push(4);
-	st.push(5);
-	st.push();
-	
-	printf("%d\n", st.top());
-	printf("%d\n", st.empty());
-	printf("%d\n", st.size());
-	return 0;
+	char str[33], stack[33];
+	int num[33], top;
+}
+void push(char c)
+{
+	stack[top++] = c;
+}
+void pop(int val)
+{
+	if (num[top]) num[top - 1] += val * num[top], num[top] = 0;
+	else num[top - 1] += val;
+	top--;
 }
